@@ -1,0 +1,18 @@
+version: '2.0'
+services:
+  accel-pppd:
+    image: accel-pppd:latest
+    hostname: accel-pppd
+    container_name: accel-pppd
+    network_mode: host
+#    ports:
+#      - 2000:2000/tcp
+#      - 2001:2001/tcp
+    volumes:
+      - "./log:/var/log/accel-ppp"
+    environment:
+      RADIUS: 'radius'
+      RADIUS_PASSWORD: 'testing123'
+      PPPOE: 1
+    stdin_open: true
+    tty: true
