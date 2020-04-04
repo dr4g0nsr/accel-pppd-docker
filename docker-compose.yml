@@ -1,7 +1,7 @@
 version: '2.0'
 services:
   accel-pppd:
-    image: accel-pppd:latest
+    image: dr4g0nsr/accel-pppd:latest
     hostname: accel-pppd
     container_name: accel-pppd
     network_mode: host
@@ -11,8 +11,10 @@ services:
     volumes:
       - "./log:/var/log/accel-ppp"
     environment:
+      INTERFACE: 'eth0'
       RADIUS: 'radius'
       RADIUS_PASSWORD: 'testing123'
       PPPOE: 1
+      IPOE: 0
     stdin_open: true
     tty: true
