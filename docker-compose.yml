@@ -10,11 +10,17 @@ services:
 #      - 2001:2001/tcp
     volumes:
       - "./log:/var/log/accel-ppp"
+#      - "./accel-ppp.conf:/etc/accel-ppp.conf"
     environment:
-      INTERFACE: 'eth0'
+      INTERFACE: 'ens192'
       RADIUS: 'radius'
       RADIUS_PASSWORD: 'testing123'
+#      PPPOE_SERVICE_NAME: 'docker'
+      PPPOE_AC_NAME: 'docker'
       PPPOE: 1
       IPOE: 0
+      PPTP: 0
+      L2TP: 0
+      SSTP: 0
     stdin_open: true
     tty: true

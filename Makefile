@@ -13,7 +13,7 @@ export $(shell sed 's/=.*//' $(dpl))
 # grep the version from the mix file
 VERSION=$(shell ./version.sh)
 
-DOCKER_COMMAND="docker-compose -f docker-compose.yml"
+DOCKER_COMPOSE_COMMAND="docker-compose -f docker-compose.yml"
 
 # HELP
 # This will output the help for each task
@@ -41,7 +41,11 @@ start: ## Start docker containers using docker-compose
 	docker-compose up -d
 
 stop: ## Stop and remove a running container
-	"${DOCKER_COMMAND}" stop
+	"${DOCKER_COMPOSE_COMMAND}" stop
+	docker rm accel-pppd
+
+kill: ## Stop and remove a running container
+	"${DOCKER_COMPOSE_COMMAND}" stop
 
 remove-dangling: ## Remove all dangling images
 	#@docker rmi \$(docker images -q -f dangling=true)
