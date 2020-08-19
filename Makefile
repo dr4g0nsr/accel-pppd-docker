@@ -35,7 +35,7 @@ build: ## Build the container
 	docker build . -t accel-pppd:latest -t dr4g0nsr/accel-pppd:latest
 
 build-nc: ## Build the container without caching
-	docker build . -t accel-pppd:latest --nocache
+	docker build . -t accel-pppd:latest -t dr4g0nsr/accel-pppd:latest --nocache
 
 start: ## Start docker containers using docker-compose
 	docker-compose up -d
